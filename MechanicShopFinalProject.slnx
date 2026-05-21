@@ -1,0 +1,16 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="docker-compose.dcproj">
+    <Build />
+  </Project>
+  <Project Path="Mechanic.Infrastructure/Mechanic.Infrastructure.csproj" />
+  <Project Path="MechanicShop.Api/MechanicShop.Api.csproj" Id="985c6778-16b5-4a96-853a-fae695c3e034" />
+  <Project Path="MechanicShop.Application/MechanicShop.Application.csproj" />
+  <Project Path="MechanicShop.Client/MechanicShop.Client.csproj" />
+  <Project Path="MechanicShop.Contracts/MechanicShop.Contracts.csproj" />
+  <Project Path="MechanicShop.Domin/MechanicShop.Domin.csproj" />
+</Solution>

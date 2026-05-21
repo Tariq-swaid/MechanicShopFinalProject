@@ -1,0 +1,25 @@
+services:
+  # 1. API
+  mechanicshop.api:
+    image: ${DOCKER_REGISTRY-}mechanicshopapi
+    build:
+      context: .
+      dockerfile: MechanicShop.Api/Dockerfile 
+
+  # 2. SQL Server
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=YourStrongPassword123!
+    ports:
+      - "1433:1433"
+
+  # 3. Seq
+  seq:
+    image: datalust/seq:latest
+    environment:
+      - ACCEPT_EULA=Y
+      - SEQ_FIRSTRUN_ADMINPASSWORD=YourStrongPassword123!
+    ports:
+      - "5341:80"

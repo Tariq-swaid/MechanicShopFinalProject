@@ -1,0 +1,32 @@
+name: .NET 10 CI Pipeline
+
+# متى يشتغل هذا الأكشن؟ (لما ترفع كود على الـ Main أو تعمل Pull Request)
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build:
+    # بيئة السيرفر اللي رح يفحص عليها
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. تنزيل الكود تبعك على سيرفر GitHub
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    # 2. تسطيب بيئة .NET 10
+    - name: Setup .NET 10
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '10.0.x'
+
+    # 3. تنزيل البكجات (يعتمد على Directory.Packages.props تبعك)
+    - name: Restore dependencies
+      run: dotnet restore MechanicShopFinalProject.sln
+
+    # 4. بناء المشروع للتأكد من عدم وجود أخطاء برمجية
+    - name: Build Project
+      run: dotnet build MechanicShopFinalProject.sln --no-restore --configuration Release
